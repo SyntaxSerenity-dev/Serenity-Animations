@@ -1,0 +1,915 @@
+/**
+ * ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+ * ║                                                                                                                   ║
+ * ║  ███████╗██╗   ██╗███╗   ██╗████████╗ █████╗ ██╗  ██╗███████╗█████╗██████╗ █████╗███╗   ██╗██╗████████╗██╗   ██╗  ║
+ * ║  ██╔════╝╚██╗ ██╔╝████╗  ██║╚══██╔══╝██╔══██╗╚██╗██╔╝██╔════╝██╔══╝██╔══██╗██╔══╝████╗  ██║██║╚══██╔══╝╚██╗ ██╔╝  ║
+ * ║  ███████╗ ╚████╔╝ ██╔██╗ ██║   ██║   ███████║ ╚███╔╝ ███████╗█████╗██████╔╝█████╗██╔██╗ ██║██║   ██║    ╚████╔╝   ║
+ * ║  ╚════██║  ╚██╔╝  ██║╚██╗██║   ██║   ██╔══██║ ██╔██╗ ╚════██║██╔══╝██╔══██╗██╔══╝██║╚██╗██║██║   ██║     ╚██╔╝    ║
+ * ║  ███████║   ██║   ██║ ╚████║   ██║   ██║  ██║██╔╝ ██╗███████║█████╗██║  ██║█████╗██║ ╚████║██║   ██║      ██║     ║
+ * ║  ╚══════╝   ╚═╝   ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚════╝╚═╝  ╚═╝╚════╝╚═╝  ╚═══╝╚═╝   ╚═╝      ╚═╝     ║
+ * ║                                R E L I A B I L I T Y   I N   E V E R Y   L I N E                                  ║
+ * ║                                              O F   C O D E                                                        ║
+ * ║                                                                                                                   ║
+ * ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+ *    
+ * File: animations.css
+ *
+ * DESCRIPTION:
+ *   Este stylesheet contém animações CSS utilizadas em todo o projeto.
+ *   Fornece animações padronizadas e reutilizáveis para componentes de UI como dropdowns,
+ *   links de navegação, botões, containers e elementos visuais, garantindo consistência
+ *   visual e de comportamento em toda a aplicação.
+ *
+ *   As animações foram projetadas para melhorar a experiência do usuário através de
+ *   transições suaves, feedback visual e micro-interações que tornam a interface mais
+ *   intuitiva e profissional.
+ *
+ * DESIGN PATTERN:
+ *   - Utility Pattern: Fornece animações reutilizáveis como classes utilitárias
+ *   - Single Responsibility: Cada @keyframes tem uma responsabilidade específica
+ *   - DRY (Don't Repeat Yourself): Evita duplicação de código de animação
+ *
+ * FEATURES:
+ *   - Animações de entrada (fade in, slide in)
+ *   - Animações de saída (fade out)
+ *   - Efeitos de hover e interação (pulse, shine, float)
+ *   - Animações de loading e estado (shimmer, blink, rotate)
+ *   - Efeitos visuais avançados (gradients, mirror reflection)
+ *   - Animações responsivas otimizadas para performance
+ *
+ * STRUCTURE:
+ *   - Animações de movimento: translate, rotate, float
+ *   - Animações de opacidade: fade in/out, pulse, blink
+ *   - Animações de escala: scale up/down
+ *   - Animações de efeitos visuais: shimmer, shine, gradients
+ *   - Animações compostas: combinações de translate + rotate + scale
+ *
+ * DEPENDENCIES:
+ *   - Nenhuma dependência externa
+ *   - Compatível com CSS3 e navegadores modernos
+ *
+ * REQUIREMENTS:
+ *   - Navegadores com suporte a CSS3 @keyframes
+ *   - Prefixos de vendor aplicados automaticamente pelo build process
+ *
+ * USAGE:
+ *   Para utilizar qualquer animação deste arquivo:
+ *   
+ *   .elemento {
+ *     animation: nome-da-animacao duracao timing-function delay iteration-count;
+ *   }
+ *   
+ *   Exemplo:
+ *   .card {
+ *     animation: fadeInUp 0.6s ease-out;
+ *   }
+ *
+ * @package       partials/ui
+ * @category      Styling UI
+ * @version       2.2.1
+ * @since         2025-01-22
+ * @license       Proprietary
+ * @development   company: syntax serenity
+ * @email         fs.developerfullstack@gmail.com
+ * @link          https://www.syntaxserenity.co.ao
+*/
+/********************************************************|
+|============= ANIMATIONS CUSTOM CONFIGURATION ==========|
+|********************************************************/
+ /**
+     * ANIMATION PURPOSE: Cria um efeito de reflexo espelhado em movimento diagonal
+     * 
+     * DESCRIPTION:
+     *    - Anima um elemento criando um movimento diagonal da esquerda superior para direita inferior
+     *    - Simula um efeito de reflexo de luz atravessando o elemento
+     *    - Ideal para criar efeitos visuais em containers vazios ou elementos decorativos
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (0%): Elemento posicionado em -100% no eixo X e Y (fora da tela, canto superior esquerdo)
+     *    2. Estado final (100%): Elemento posicionado em +100% no eixo X e Y (fora da tela, canto inferior direito)
+     *    3. A transição cria um movimento diagonal suave através do elemento
+     * 
+     * USE CASES:
+     *    - Efeitos de loading em containers vazios
+     *    - Elementos decorativos com movimento
+     *    - Backgrounds animados
+     * 
+     * PERFORMANCE:
+     *    - Usa transform que é otimizado pela GPU
+     *    - Não causa reflow/repaint
+     * 
+     * @keyframes  mirror-reflection
+     * @property   transform: translate() rotate()
+     * @duration   Recomendado: 3s - 6s para efeito suave
+     * @timing     Recomendado: ease-in-out ou linear
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes mirror-reflection {
+     0% {
+         transform: translate(-100%, -100%) rotate(0deg);
+     }
+     100% {
+         transform: translate(100%, 100%) rotate(0deg);
+     }
+ }
+
+ /**
+     * ANIMATION PURPOSE: Cria efeito de brilho deslizante horizontal
+     * 
+     * DESCRIPTION:
+     *    - Anima uma faixa de luz que se move horizontalmente da esquerda para direita
+     *    - Comumente usado em skeleton screens e estados de carregamento
+     *    - Simula um efeito de "varredura" de luz sobre o elemento
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (0%): Elemento posicionado em -100% (completamente à esquerda, fora da visão)
+     *    2. Estado final (100%): Elemento posicionado em +100% (completamente à direita, fora da visão)
+     *    3. O movimento cria um efeito de shimmer atravessando o elemento
+     * 
+     * USE CASES:
+     *    - Skeleton screens durante carregamento de conteúdo
+     *    - Efeitos de loading em cards e containers
+     *    - Indicadores visuais de processamento
+     * 
+     * PERFORMANCE:
+     *    - Usa propriedade left (pode causar reflow)
+     *    - Para melhor performance, considere usar transform: translateX()
+     * 
+     * @keyframes  shimmer
+     * @property   left
+     * @duration   Recomendado: 1.5s - 2.5s
+     * @timing     Recomendado: ease-in-out ou linear
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes shimmer {
+     0% { left: -100%; }
+     100% { left: 100%; }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de flutuação suave com leve rotação
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento com movimento vertical suave combinado com rotação sutil
+     *    - Simula um objeto flutuando ou balançando levemente no ar
+     *    - Adiciona sensação de leveza e dinamismo a elementos estáticos
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial/final (0%, 100%): Posição original sem translação ou rotação
+     *    2. Estado intermediário (50%): Elemento sobe 20px e rotaciona 5 graus
+     *    3. Movimento é simétrico, criando um loop contínuo suave
+     * 
+     * USE CASES:
+     *    - Ícones e ilustrações decorativas
+     *    - Elementos de destaque visual
+     *    - Imagens de produtos ou features
+     *    - Call-to-action buttons com efeito sutil
+     * 
+     * PERFORMANCE:
+     *    - Usa transform que é otimizado pela GPU
+     *    - Ideal para loops infinitos
+     * 
+     * @keyframes  float
+     * @property   transform: translateY() rotate()
+     * @duration   Recomendado: 3s - 6s para movimento natural
+     * @timing     Recomendado: ease-in-out
+     * @iteration  infinite
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+  */
+ @keyframes float {
+     0%, 100% {
+         transform: translateY(0) rotate(0deg);
+     }
+     50% {
+         transform: translateY(-20px) rotate(5deg);
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de pulsação com variação de opacidade e escala
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento expandindo e contraindo com mudança de opacidade
+     *    - Simula um efeito de "respiração" ou ondas expandindo
+     *    - Útil para chamar atenção ou indicar atividade
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (0%): Opacidade 0, escala 0.8 (elemento menor e invisível)
+     *    2. Estado intermediário (50%): Opacidade 1, escala 1 (tamanho normal, totalmente visível)
+     *    3. Estado final (100%): Opacidade 0, escala 1.2 (expandido e invisível)
+     * 
+     * USE CASES:
+     *    - Indicadores de notificação
+     *    - Efeitos de radar ou sonar
+     *    - Botões de ação importante
+     *    - Elementos de loading pulsantes
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Ideal para loops infinitos
+     * 
+     * @keyframes  pulse
+     * @property   opacity, transform: scale()
+     * @duration   Recomendado: 1.5s - 2s
+     * @timing     Recomendado: ease-out
+     * @iteration  infinite
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes pulse {
+     0% {
+         opacity: 0;
+         transform: scale(0.8);
+     }
+     50% {
+         opacity: 1;
+         transform: scale(1);
+     }
+     100% {
+         opacity: 0;
+         transform: scale(1.2);
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de entrada com fade e deslizamento vertical
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento surgindo de baixo para cima com aumento gradual de opacidade
+     *    - Cria uma entrada suave e profissional para conteúdo
+     *    - Combina movimento vertical com transição de transparência
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 0, posição 20px abaixo do ponto final
+     *    2. Estado final (to): Opacidade 1, posição original (0)
+     *    3. Transição suave entre os estados
+     * 
+     * USE CASES:
+     *    - Entrada de cards e containers
+     *    - Revelação de conteúdo ao scroll
+     *    - Modais e popups
+     *    - Elementos de lista aparecendo sequencialmente
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Recomendado para animações de entrada únicas (não loops)
+     * 
+     * @keyframes  fadeInUp
+     * @property   opacity, transform: translateY()
+     * @duration   Recomendado: 0.4s - 0.8s
+     * @timing     Recomendado: ease-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes fadeInUp {
+     from {
+        opacity: 0;
+        transform: translateY(20px);
+     }
+     to {
+        opacity: 1;
+        transform: translateY(0);
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de entrada com fade e leve aumento de escala
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento surgindo com aumento gradual de opacidade e escala
+     *    - Cria uma entrada sutil e elegante
+     *    - Combina transparência com leve zoom in
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 0, escala 0.95 (levemente menor)
+     *    2. Estado final (to): Opacidade 1, escala 1 (tamanho normal)
+     *    3. Elemento "cresce" suavemente enquanto aparece
+     * 
+     * USE CASES:
+     *    - Entrada de modais e diálogos
+     *    - Tooltips e popovers
+     *    - Imagens em galerias
+     *    - Conteúdo dinâmico carregado via AJAX
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Muito eficiente para múltiplas instâncias
+     * 
+     * @keyframes  fadeIn
+     * @property   opacity, transform: scale()
+     * @duration   Recomendado: 0.3s - 0.6s
+     * @timing     Recomendado: ease-out ou ease-in-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes fadeIn {
+     from { opacity: 0; transform: scale(0.95); }
+     to { opacity: 1; transform: scale(1); }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de saída com fade e leve redução de escala
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento desaparecendo com redução gradual de opacidade e escala
+     *    - Cria uma saída suave e profissional
+     *    - Inverso da animação fadeIn
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 1, escala 1 (tamanho normal, visível)
+     *    2. Estado final (to): Opacidade 0, escala 0.95 (levemente menor, invisível)
+     *    3. Elemento "encolhe" suavemente enquanto desaparece
+     * 
+     * USE CASES:
+     *    - Fechamento de modais e diálogos
+     *    - Remoção de elementos da interface
+     *    - Transições de página
+     *    - Ocultação de notificações
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Geralmente combinado com display: none após animação
+     * 
+     * @keyframes  fadeOut
+     * @property   opacity, transform: scale()
+     * @duration   Recomendado: 0.2s - 0.4s (mais rápido que fadeIn)
+     * @timing     Recomendado: ease-in
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes fadeOut {
+     from { opacity: 1; transform: scale(1); }
+     to { opacity: 0; transform: scale(0.95); }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de reflexo de luz deslizando horizontalmente
+     * 
+     * DESCRIPTION:
+     *    - Anima uma faixa de luz que atravessa o elemento da esquerda para direita
+     *    - Simula um reflexo de luz ou brilho passando pela superfície
+     *    - Usado para adicionar dinamismo e chamar atenção
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (0%): Elemento posicionado em -75% (fora da tela à esquerda)
+     *    2. Estado final (100%): Elemento posicionado em 125% (fora da tela à direita)
+     *    3. Range maior que 100% garante cobertura completa do elemento
+     * 
+     * USE CASES:
+     *    - Efeito hover em botões e cards
+     *    - Destaque visual em elementos importantes
+     *    - Indicadores de interatividade
+     *    - Efeitos de "polish" visual
+     * 
+     * PERFORMANCE:
+     *    - Usa propriedade left (pode causar reflow)
+     *    - Recomenda-se usar em pseudo-elementos ::before ou ::after
+     * 
+     * @keyframes  shine
+     * @property   left
+     * @duration   Recomendado: 0.6s - 1.2s
+     * @timing     Recomendado: ease-in-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes shine {
+     0%   { left: -75%; }
+     100% { left: 125%; }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de pulsação suave com variação sutil de escala
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento com pulsação delicada e leve mudança de opacidade
+     *    - Versão mais sutil da animação pulse padrão
+     *    - Ideal para chamar atenção sem ser intrusivo
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial/final (0%, 100%): Opacidade 1, escala 1 (estado normal)
+     *    2. Estado intermediário (50%): Opacidade 0.9, escala 1.1 (levemente maior e translúcido)
+     *    3. Movimento é simétrico criando efeito de "respiração"
+     * 
+     * USE CASES:
+     *    - Badges de notificação
+     *    - Indicadores de status online
+     *    - Elementos de atenção não urgentes
+     *    - Botões de call-to-action sutis
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Ideal para loops infinitos
+     * 
+     * @keyframes  pulse-soft
+     * @property   opacity, transform: scale()
+     * @duration   Recomendado: 2s - 3s
+     * @timing     Recomendado: ease-in-out
+     * @iteration  infinite
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes pulse-soft {
+     0% { opacity: 1; transform: scale(1); }
+     50% { opacity: 0.9; transform: scale(1.1); }
+     100% { opacity: 1; transform: scale(1); }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de pulsação forte com variação dramática
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento com pulsação intensa e mudança significativa de opacidade
+     *    - Versão mais dramática da animação pulse-soft
+     *    - Usada para chamar atenção de forma mais enfática
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial/final (0%, 100%): Opacidade 1, escala 1 (estado normal)
+     *    2. Estado intermediário (50%): Opacidade 0.5, escala 1.2 (20% maior e semi-transparente)
+     *    3. Variação maior cria efeito visual mais impactante
+     * 
+     * USE CASES:
+     *    - Alertas urgentes
+     *    - Notificações críticas
+     *    - Elementos que requerem ação imediata
+     *    - Indicadores de erro ou warning
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Pode ser visualmente cansativo se usado em excesso
+     * 
+     * @keyframes  pulse-strong
+     * @property   opacity, transform: scale()
+     * @duration   Recomendado: 1s - 1.5s
+     * @timing     Recomendado: ease-in-out
+     * @iteration  infinite ou até 3-5 vezes
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes pulse-strong {
+     0% { opacity: 1; transform: scale(1); }
+     50% { opacity: 0.5; transform: scale(1.2); }
+     100% { opacity: 1; transform: scale(1); }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de onda de cores em gradiente
+     * 
+     * DESCRIPTION:
+     *    - Anima a posição de um background gradiente criando movimento fluido de cores
+     *    - Simula ondas ou fluidos coloridos em movimento
+     *    - Requer background com gradiente linear ou radial
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial/final (0%, 100%): Background posicionado em 0% 50%
+     *    2. Estado intermediário (50%): Background posicionado em 100% 50%
+     *    3. Movimento horizontal do gradiente cria efeito de onda
+     * 
+     * USE CASES:
+     *    - Backgrounds animados em hero sections
+     *    - Elementos decorativos com gradientes
+     *    - Botões premium com efeito de movimento
+     *    - Separadores visuais animados
+     * 
+     * PERFORMANCE:
+     *    - Usa background-position (pode impactar performance)
+     *    - Recomenda-se usar em elementos limitados
+     *    - Considere usar will-change: background-position
+     * 
+     * REQUIREMENTS:
+     *    - Elemento deve ter background com gradiente
+     *    - background-size deve ser maior que 100% (ex: 200% 200%)
+     * 
+     * @keyframes  colorWave
+     * @property   background-position
+     * @duration   Recomendado: 3s - 6s
+     * @timing     Recomendado: ease-in-out ou linear
+     * @iteration  infinite
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes colorWave {
+     0% {
+         background-position: 0% 50%;
+     }
+     50% {
+         background-position: 100% 50%;
+     }
+     100% {
+         background-position: 0% 50%;
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de entrada deslizando da esquerda
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento surgindo da esquerda com aumento de opacidade
+     *    - Movimento horizontal da esquerda para direita
+     *    - Cria sensação de conteúdo entrando no viewport
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 0, posição -100px à esquerda
+     *    2. Estado final (to): Opacidade 1, posição original (0)
+     *    3. Elemento "desliza" da esquerda enquanto aparece
+     * 
+     * USE CASES:
+     *    - Entrada de seções ao scroll
+     *    - Revelação de conteúdo lateral
+     *    - Animações de navegação
+     *    - Transições de página
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Recomendado para animações de entrada únicas
+     * 
+     * @keyframes  slideInLeft
+     * @property   opacity, transform: translateX()
+     * @duration   Recomendado: 0.5s - 0.8s
+     * @timing     Recomendado: ease-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes slideInLeft {
+     from {
+         opacity: 0;
+         transform: translateX(-100px);
+     }
+     to {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de entrada deslizando da direita
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento surgindo da direita com aumento de opacidade
+     *    - Movimento horizontal da direita para esquerda
+     *    - Contraparte da animação slideInLeft
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 0, posição +100px à direita
+     *    2. Estado final (to): Opacidade 1, posição original (0)
+     *    3. Elemento "desliza" da direita enquanto aparece
+     * 
+     * USE CASES:
+     *    - Entrada de seções ao scroll (alternando com slideInLeft)
+     *    - Revelação de conteúdo lateral direito
+     *    - Sidebars e painéis laterais
+     *    - Elementos de resposta ou feedback
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Recomendado para animações de entrada únicas
+     * 
+     * @keyframes  slideInRight
+     * @property   opacity, transform: translateX()
+     * @duration   Recomendado: 0.5s - 0.8s
+     * @timing     Recomendado: ease-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes slideInRight {
+     from {
+         opacity: 0;
+         transform: translateX(100px);
+     }
+     to {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de flutuação com rotação 3D no eixo Y
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento flutuando verticalmente com rotação perspectiva
+     *    - Combina movimento vertical com rotação 3D sutil
+     *    - Ideal para elementos que precisam de efeito tridimensional
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial/final (0%, 100%): Posição original sem translação ou rotação
+     *    2. Estado intermediário (50%): Elemento sobe 10px e rotaciona 10 graus no eixo Y
+     *    3. Rotação em Y cria efeito de profundidade 3D
+     * 
+     * USE CASES:
+     *    - Mockups de dispositivos móveis
+     *    - Imagens de produtos com efeito showcase
+     *    - Cards premium com interatividade
+     *    - Elementos de destaque em hero sections
+     * 
+     * PERFORMANCE:
+     *    - Usa transform 3D (otimizado pela GPU)
+     *    - Requer perspective no elemento pai para efeito 3D completo
+     * 
+     * REQUIREMENTS:
+     *    - Elemento pai deve ter perspective definida (ex: perspective: 1000px)
+     * 
+     * @keyframes  floatRotateY
+     * @property   transform: translateY() rotateY()
+     * @duration   Recomendado: 4s - 6s
+     * @timing     Recomendado: ease-in-out
+     * @iteration  infinite
+     * 
+     * @note       Nome anterior: phoneFloat (renomeado para ser mais genérico)
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes floatRotateY {
+     0%, 100% {
+         transform: translateY(0) rotateY(0deg);
+     }
+     50% {
+         transform: translateY(-10px) rotateY(10deg);
+     }
+ }
+
+ /**
+     * ANIMATION PURPOSE: Cria efeito de entrada para dropdowns com fade e slide
+     * 
+     * DESCRIPTION:
+     *    - Anima dropdown surgindo de cima para baixo com aumento de opacidade e escala
+     *    - Combina três transformações: opacidade, translação vertical e escala
+     *    - Cria entrada suave e profissional para menus dropdown
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 0, 10px acima, escala 0.95
+     *    2. Estado final (to): Opacidade 1, posição original, escala 1
+     *    3. Elemento "desce" e "cresce" simultaneamente
+     * 
+     * USE CASES:
+     *    - Menus dropdown de navegação
+     *    - Select customizados
+     *    - Submenus e nested dropdowns
+     *    - Tooltips contextuais
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Muito eficiente para interações frequentes
+     * 
+     * @keyframes  dropdownFadeIn
+     * @property   opacity, transform: translateY() scale()
+     * @duration   Recomendado: 0.2s - 0.3s (rápido para UX responsiva)
+     * @timing     Recomendado: ease-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes dropdownFadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(-10px) scale(0.95);
+     }
+     to {
+         opacity: 1;
+         transform: translateY(0) scale(1);
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria rotação contínua 360 graus
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento girando completamente no sentido horário
+     *    - Rotação suave e infinita de 0 a 360 graus
+     *    - Animação básica essencial para loaders e spinners
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Rotação 0 graus
+     *    2. Estado final (to): Rotação 360 graus
+     *    3. Loop infinito cria rotação contínua
+     * 
+     * USE CASES:
+     *    - Spinners de loading
+     *    - Indicadores de progresso
+     *    - Ícones animados (configurações, refresh)
+     *    - Elementos decorativos em movimento
+     * 
+     * PERFORMANCE:
+     *    - Usa transform rotate (otimizado pela GPU)
+     *    - Extremamente eficiente para loops infinitos
+     * 
+     * @keyframes  rotate
+     * @property   transform: rotate()
+     * @duration   Recomendado: 1s - 2s (quanto menor, mais rápido)
+     * @timing     Recomendado: linear (rotação constante)
+     * @iteration  infinite
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes rotate {
+     from { transform: rotate(0deg); }
+     to { transform: rotate(360deg); }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito suave de fade durante scroll
+     * 
+     * DESCRIPTION:
+     *    - Anima aumento gradual de opacidade
+     *    - Transição sutil de semi-transparente para totalmente opaco
+     *    - Usado para revelar conteúdo durante navegação ou scroll
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 0.7 (semi-transparente)
+     *    2. Estado final (to): Opacidade 1 (totalmente opaco)
+     *    3. Transição suave sem transformações geométricas
+     * 
+     * USE CASES:
+     *    - Revelação de conteúdo ao scroll
+     *    - Fade in de imagens lazy-loaded
+     *    - Transições suaves entre estados
+     *    - Animações trigger por scroll
+     * 
+     * PERFORMANCE:
+     *    - Usa apenas opacity (muito leve)
+     *    - Ideal para múltiplos elementos simultaneamente
+     * 
+     * @keyframes  fadeInScroll
+     * @property   opacity
+     * @duration   Recomendado: 0.4s - 0.8s
+     * @timing     Recomendado: ease-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes fadeInScroll {
+     from {
+         opacity: 0.7;
+     }
+     to {
+         opacity: 1;
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria movimento vertical de gradiente
+     * 
+     * DESCRIPTION:
+     *    - Anima a posição de um background gradiente verticalmente
+     *    - Movimento de cima para baixo e volta
+     *    - Similar a colorWave mas no eixo vertical
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial/final (0%, 100%): Background em 0% 0% (topo)
+     *    2. Estado intermediário (50%): Background em 0% 100% (base)
+     *    3. Movimento vertical cria efeito de onda descendente
+     * 
+     * USE CASES:
+     *    - Backgrounds animados verticais
+     *    - Botões com gradiente dinâmico
+     *    - Headers com efeito de movimento
+     *    - Elementos decorativos com flow vertical
+     * 
+     * PERFORMANCE:
+     *    - Usa background-position (pode impactar performance)
+     *    - Recomenda-se limitar quantidade de elementos
+     * 
+     * REQUIREMENTS:
+     *    - Elemento deve ter background com gradiente
+     *    - background-size deve ser maior que 100% no eixo Y
+     * 
+     * @keyframes  gradientSlide
+     * @property   background-position
+     * @duration   Recomendado: 3s - 5s
+     * @timing     Recomendado: ease-in-out
+     * @iteration  infinite
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes gradientSlide {
+     0%, 100% {
+         background-position: 0% 0%;
+     }
+     50% {
+         background-position: 0% 100%;
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito de piscar/intermitência
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento alternando entre visível e semi-transparente
+     *    - Cria efeito de piscada em intervalos regulares
+     *    - Usado para chamar atenção ou indicar status ativo
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estados 0%, 50%, 100%: Opacidade 1 (totalmente visível)
+     *    2. Estados 25%, 75%: Opacidade 0.3 (semi-transparente)
+     *    3. Padrão cria duas piscadas por ciclo completo
+     * 
+     * USE CASES:
+     *    - Indicadores de gravação/transmissão ao vivo
+     *    - Cursores piscantes em inputs
+     *    - Alertas de atenção
+     *    - Status indicators (online/offline)
+     * 
+     * PERFORMANCE:
+     *    - Usa apenas opacity (muito eficiente)
+     *    - Ideal para loops infinitos
+     * 
+     * ACCESSIBILITY:
+     *    - Evite frequências altas (< 0.5s) que podem causar desconforto
+     *    - Considere prefers-reduced-motion para desabilitar
+     * 
+     * @keyframes  blink
+     * @property   opacity
+     * @duration   Recomendado: 1s - 1.5s
+     * @timing     Recomendado: step-start ou linear
+     * @iteration  infinite
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes blink {
+     0%, 50%, 100% {
+         opacity: 1;
+     }
+     25%, 75% {
+         opacity: 0.3;
+     }
+ }
+ 
+ /**
+     * ANIMATION PURPOSE: Cria efeito simples de entrada deslizando da esquerda
+     * 
+     * DESCRIPTION:
+     *    - Anima elemento surgindo da esquerda com fade
+     *    - Versão mais curta e rápida de slideInLeft
+     *    - Movimento horizontal com transição de opacidade
+     * 
+     * ANIMATION LOGIC:
+     *    1. Estado inicial (from): Opacidade 0, posição -20px à esquerda
+     *    2. Estado final (to): Opacidade 1, posição original (0)
+     *    3. Distância menor (20px vs 100px) para efeito mais sutil
+     * 
+     * USE CASES:
+     *    - Animações de lista (items aparecendo sequencialmente)
+     *    - Notificações deslizantes
+     *    - Menu items
+     *    - Elementos de interface pequenos
+     * 
+     * PERFORMANCE:
+     *    - Usa transform e opacity (otimizados pela GPU)
+     *    - Muito eficiente para múltiplas instâncias
+     * 
+     * @keyframes  slideIn
+     * @property   opacity, transform: translateX()
+     * @duration   Recomendado: 0.3s - 0.5s (mais rápido que slideInLeft)
+     * @timing     Recomendado: ease-out
+     * 
+     * @since      2025-01-22
+     * @version    1.0.0
+     * @author     Syntax Serenity Development Team
+ */
+ @keyframes slideIn {
+     from {
+         opacity: 0;
+         transform: translateX(-20px);
+     }
+     to {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
