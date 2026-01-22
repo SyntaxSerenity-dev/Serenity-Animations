@@ -810,8 +810,6 @@ copies of the Software...
 - 📧 Email: fs.developerfullstack@gmail.com
 - 🐙 GitHub: [@SyntaxSerenity-dev](https://github.com/SyntaxSerenity-dev)
 
-**Originally created for [KENDAAGRO](https://www.kendaagro.co.ao)** - A complete agricultural logistics platform in Angola
-
 ### Development Team
 
 - **Fanilton F. Samuel** - Lead Developer
