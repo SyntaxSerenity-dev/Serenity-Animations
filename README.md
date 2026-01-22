@@ -2,7 +2,7 @@
 
 > **A comprehensive, production-ready CSS animation library designed for modern web applications**
 
-[![Version](https://img.shields.io/badge/version-2.2.1-blue.svg)](https://github.com/syntaxserenity/serenity-animations)
+[![Version](https://img.shields.io/badge/version-2.2.1-blue.svg)](https://github.com/syntaxserenity-dev/serenity-animations)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CSS3](https://img.shields.io/badge/CSS-3-1572B6.svg)](https://www.w3.org/Style/CSS/)
 [![Browser Support](https://img.shields.io/badge/browsers-modern-success.svg)](#browser-support)
@@ -143,7 +143,7 @@ npm install @syntaxserenity/animations
 
 ### Option 2: Download
 
-1. Download `animations.css` from [releases](https://github.com/syntaxserenity/serenity-animations/releases)
+1. Download `animations.css` from [releases](https://github.com/syntaxserenity-dev/serenity-animations/releases)
 2. Place in your project's CSS directory
 3. Import in your HTML:
 
@@ -762,7 +762,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ```bash
 # Clone the repository
-git clone https://github.com/syntaxserenity/serenity-animations.git
+git clone https://github.com/syntaxserenity-dev/serenity-animations.git
 
 # Create a feature branch
 git checkout -b feature/new-animation
@@ -829,8 +829,8 @@ Projects using Serenity Animations:
 ## 📞 Support
 
 - 📧 Email: fs.developerfullstack@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/syntaxserenity/serenity-animations/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/syntaxserenity/serenity-animations/discussions)
+- 🐛 Issues: [GitHub Issues](https://github.com/syntaxserenity-dev/serenity-animations/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/syntaxserenity-dev/serenity-animations/discussions)
 
 ---
 
@@ -849,6 +849,6 @@ If this library helped your project, please consider:
 
 **Made with ❤️ by [Syntax Serenity](https://www.syntaxserenity.co.ao)**
 
-[![Star on GitHub](https://img.shields.io/github/stars/syntaxserenity/serenity-animations.svg?style=social)](https://github.com/syntaxserenity/serenity-animations)
+[![Star on GitHub](https://img.shields.io/github/stars/syntaxserenity/serenity-animations.svg?style=social)](https://github.com/syntaxserenity-dev/serenity-animations)
 
 </div>
