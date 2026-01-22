@@ -1,6 +1,6 @@
 # 🎨 Serenity Animations
 
-> **A comprehensive, production-ready CSS animation library designed for modern web applications**
+> **Production-ready CSS animation library featuring 20+ smooth, GPU-accelerated animations including fadeIn, pulse, shimmer, float, and more. Zero dependencies, mobile-optimized, respects prefers-reduced-motion. Built for performance and user experience.**
 
 [![Version](https://img.shields.io/badge/version-2.2.1-blue.svg)](https://github.com/syntaxserenity-dev/serenity-animations)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
